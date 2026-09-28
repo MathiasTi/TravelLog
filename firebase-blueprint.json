@@ -1,0 +1,70 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "User account details and settings",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["owner", "editor", "viewer", "admin"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "trips": {
+      "title": "Trip",
+      "description": "Travel trips containing itineraries and memories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "coverImage": { "type": "string" },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "countryCodes": { "type": "array", "items": { "type": "string" } },
+        "passwordProtected": { "type": "boolean" },
+        "passwordHash": { "type": "string" },
+        "isPublic": { "type": "boolean" },
+        "shareToken": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "collaborators": { "type": "array" },
+        "defaultCoordinates": { "type": "array", "items": { "type": "number" } },
+        "defaultZoom": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title"]
+    },
+    "entries": {
+      "title": "Journal Entry",
+      "description": "Memories, GPS coordinates, photos, and notes within a trip",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tripId": { "type": "string" },
+        "title": { "type": "string" },
+        "note": { "type": "string" },
+        "coordinates": { "type": "object" },
+        "locationName": { "type": "string" },
+        "country": { "type": "string" },
+        "date": { "type": "string" },
+        "weather": { "type": "object" },
+        "mood": { "type": "string" },
+        "category": { "type": "string" },
+        "media": { "type": "array" },
+        "author": { "type": "object" },
+        "comments": { "type": "array" },
+        "likes": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "tripId", "title"]
+    }
+  },
+  "firestoreRules": "firestore.rules"
+}

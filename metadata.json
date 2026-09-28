@@ -1,0 +1,8 @@
+{
+  "name": "TravelLog - Reisetagebuch & Weltkarte",
+  "description": "Kollaboratives Geo-Reisetagebuch mit interaktiver Weltkarte, GPX & FIT Streckenimport, Höhenprofil-Analyse, Offline-Synchronisierung, Foto-Uploads, Passwortschutz und geteilten Reiseerinnerungen.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

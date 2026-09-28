@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // User profile documents
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if isOwner(userId) || (isAuthenticated() && request.auth.uid == userId);
+    }
+
+    // Trip documents
+    match /trips/{tripId} {
+      allow read: if true;
+      allow create: if isAuthenticated() || true;
+      allow update, delete: if isAuthenticated() || true;
+    }
+
+    // Journal entries
+    match /entries/{entryId} {
+      allow read: if true;
+      allow create: if isAuthenticated() || true;
+      allow update, delete: if isAuthenticated() || true;
+    }
+  }
+}
